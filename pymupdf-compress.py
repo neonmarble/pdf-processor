@@ -17,6 +17,16 @@ except ImportError:
     sys.exit(1)
 
 
+def compression_effort_type(value):
+    try:
+        ivalue = int(value)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"invalid int value: '{value}'")
+    if ivalue < 0 or ivalue > 100:
+        raise argparse.ArgumentTypeError(f"{ivalue} is not between 0 and 100")
+    return ivalue
+
+
 def parse_args():
     parser = argparse.ArgumentParser(
         description="Compresses PDF files in the current directory using PyMuPDF."
@@ -35,7 +45,7 @@ def parse_args():
     )
     parser.add_argument(
         "--compression-effort", "-e",
-        type=int,
+        type=compression_effort_type,
         default=0,
         help="Compression effort 0-100. 0 = auto, higher = more effort. Default: 0.",
     )
