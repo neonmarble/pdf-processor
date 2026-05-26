@@ -27,3 +27,6 @@ dist/
 Thumbs.db
 .idea/
 .vscode/
+
+# LLMs
+.opencode
