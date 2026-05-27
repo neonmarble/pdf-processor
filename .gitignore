@@ -30,3 +30,6 @@ Thumbs.db
 
 # LLMs
 .opencode
+
+# var
+test-files/
