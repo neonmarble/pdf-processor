@@ -77,7 +77,9 @@ def get_mutool_version(mutool_path):
         text=True,
         check=True,
     )
-    return result.stdout.strip().splitlines()[0]
+    version_output = result.stderr.strip() or result.stdout.strip()
+    version_line = version_output.splitlines()[0]
+    return version_line.replace("mutool version ", "")
 
 
 def build_clean_cmd(mutool_path, mode, preset, input_file, output_file):
